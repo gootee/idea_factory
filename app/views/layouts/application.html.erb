@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ideas</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="nav">
+        <div>
+          Idea Factory
+        </div>
+        <div>
+          <%= link_to 'New Idea', new_idea_path %>
+          <!-- |
+          <%#= link_to 'All Ideas', ideas_path %> -->
+          <div>
+            <% if user_signed_in? %>
+              Hello <%= current_user.full_name %>,
+              <%= link_to "Logout", sessions_path, method: :delete, data: {confirm: "Are you sure you want to log out"}%>
+            <% else %>
+              <%= link_to "Login", new_session_path %>
+              <%= link_to "Sign Up", new_user_path %>
+            <% end %>
+          </div>        
+        </div>
+        <!-- <a href="/">Home</a> -->
+        <%#= link_to 'Home', root_path %>
+        <%#= link_to 'Home', root_url %>
+        <!-- | -->
+        <%# `link_to` is a method called view helper that comes with Rails and it generate <a> tag %>
+
+      </nav>
+    </header>
+    <!-- <%# flash.each do |type, message|%>
+      <div class="flash <%#= alert_class(type) %>">
+        <%#= message %>
+      </div>
+    <%# end %> -->
+
+    <main class="container-fluid">
+      <%= yield %>
+    </main>
+  </body>
+</html>

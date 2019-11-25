@@ -1,0 +1,44 @@
+<%# if @idea.errors.any? %>
+  <!-- <ul>
+      <%# @idea.errors.full_messages.each do |msg|%>
+      <li><%#=msg%></li>
+      <%# end %>
+  </ul> -->
+
+<!-- <%#end%> -->
+
+<%= form_for @idea do |f|%>
+
+<div class="form-group">
+<%= f.label :title %>
+<%= f.text_field :title %>
+</div>
+<div class="form-group">
+<%= f.label :description %>
+<%= f.text_field :description %>
+</div>
+<!-- <div class="form-group">
+  <%#= f.label :tag_names %>
+  <%#= f.text_field :tag_names, input_html: { spellcheck: true } %>
+</div> -->
+<%= f.submit "Submit Idea", class: "btn btn-primary" %>
+
+<%end%>
+
+<!-- <script>
+
+  $("#question_tag_names").selectize({
+      delimiter: ',',
+      persist: false,
+      labelField: "name",
+      valueField: "name",
+      searchField: "name",
+      options: <%#= Tag.select(:name).to_json(except: [:id]).html_safe %>,
+      create(input) {
+        return {
+          name: input
+        }
+      }
+  });
+
+</script> -->
